@@ -1,0 +1,13 @@
+pipeline
+{
+agent any
+stages
+{
+  stage ('scm checkout')
+    { steps  { git branch: 'master', url: 'https://github.com/itspri746/Ant-WebProject'    }  }
+  stage ('code build')
+    { steps { withAnt(installation: 'localAnt', jdk: 'java_home') 
+        { sh 'ant init'  } 
+    }}
+
+}}
